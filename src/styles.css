@@ -5,14 +5,25 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Plus Jakarta Sans", "Inter", ui-sans-serif, sans-serif;
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-display: "Instrument Serif", Georgia, serif;
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-3xl: 32px;
+  --radius-full: 9999px;
+
+  --color-pure-black: #000000;
+  --color-deep-slate-blue: #7895B2;
+  --color-slate-mist: #AEBDCA;
+  --color-warm-sand: #E8DFCA;
+  --color-pure-white: #FFFFFF;
+  --color-sand-border: #D6CCB5;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -28,8 +39,6 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  --color-lavender: var(--lavender);
-  --color-ink: var(--ink);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
@@ -38,88 +47,217 @@
 }
 
 :root {
-  --radius: 1rem;
-  /* Palette: #FFFDFE very light, #DBB5EE soft lavender, #4C0585 deep purple */
-  --background: oklch(0.996 0.002 340);
-  --foreground: oklch(0.22 0.09 300);
-  --ink: oklch(0.2 0.1 300);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.22 0.09 300);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.22 0.09 300);
-  --primary: oklch(0.36 0.19 302);
-  --primary-foreground: oklch(0.996 0.002 340);
-  --primary-glow: oklch(0.55 0.22 305);
-  --lavender: oklch(0.82 0.08 312);
-  --secondary: oklch(0.95 0.03 312);
-  --secondary-foreground: oklch(0.36 0.19 302);
-  --muted: oklch(0.97 0.015 312);
-  --muted-foreground: oklch(0.48 0.06 300);
-  --accent: oklch(0.82 0.08 312);
-  --accent-foreground: oklch(0.3 0.17 302);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.9 0.035 312);
-  --input: oklch(0.9 0.035 312);
-  --ring: oklch(0.55 0.22 305);
+  --radius: 1.5rem;
+  
+  /* Marvedge Canonical Palette (LOCKED TO BRANDKIT.md) */
+  --background: #E8DFCA;
+  --foreground: #000000;
+  --ink: #000000;
+  --card: #FFFFFF;
+  --card-foreground: #000000;
+  --popover: #FFFFFF;
+  --popover-foreground: #000000;
+  --primary: #000000;
+  --primary-foreground: #FFFFFF;
+  --primary-glow: #7895B2;
+  --lavender: #AEBDCA;
+  --secondary: #E8DFCA;
+  --secondary-foreground: #000000;
+  --muted: #D6CCB5;
+  --muted-foreground: #4A4740;
+  --accent: #7895B2;
+  --accent-foreground: #FFFFFF;
+  --destructive: #D95338;
+  --destructive-foreground: #FFFFFF;
+  --border: #D6CCB5;
+  --input: #AEBDCA;
+  --ring: #7895B2;
 
-  --gradient-hero: radial-gradient(60% 60% at 80% 10%, color-mix(in oklab, var(--lavender) 70%, transparent), transparent 70%),
-    radial-gradient(50% 50% at 0% 80%, color-mix(in oklab, var(--primary-glow) 18%, transparent), transparent 70%);
-  --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-glow));
-  --gradient-band: linear-gradient(120deg, oklch(0.26 0.16 300), var(--primary) 45%, var(--primary-glow));
-  --shadow-elegant: 0 24px 60px -24px color-mix(in oklab, var(--primary) 45%, transparent);
-  --shadow-soft: 0 8px 30px -12px color-mix(in oklab, var(--primary) 25%, transparent);
+  /* Tactile Subtle Shadows & Lighting */
+  --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+  --shadow-card-hover: 0 14px 34px -4px rgba(0, 0, 0, 0.09), 0 4px 12px -2px rgba(0, 0, 0, 0.04);
+  --shadow-popover: 0 20px 40px -10px rgba(0, 0, 0, 0.12);
+  --shadow-elegant: 0 14px 34px -4px rgba(0, 0, 0, 0.09);
+  --shadow-soft: 0 4px 16px -2px rgba(0, 0, 0, 0.05);
+
+  --gradient-hero: radial-gradient(80% 80% at 50% 0%, rgba(255, 255, 255, 0.45), transparent 75%);
+  --gradient-primary: linear-gradient(135deg, #000000, #1A1A1A);
+  --gradient-band: linear-gradient(135deg, #000000 0%, #111111 100%);
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
+  * {
+    border-color: var(--color-border);
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+  h1, h2, h3, h4 {
+    letter-spacing: -0.02em;
+  }
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
 }
 
-@utility bg-hero { background-image: var(--gradient-hero); }
-@utility bg-gradient-primary { background-image: var(--gradient-primary); }
-@utility bg-band { background-image: var(--gradient-band); }
-@utility shadow-elegant { box-shadow: var(--shadow-elegant); }
-@utility shadow-soft { box-shadow: var(--shadow-soft); }
-@utility text-gradient {
-  background-image: var(--gradient-primary);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+/* ==========================================================================
+   BUTTON SYSTEM (LOCKED TO BRANDKIT.md)
+   ========================================================================== */
+
+@utility btn-pure-black {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #000000;
+  color: #FFFFFF;
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  &:hover {
+    background-color: #1A1A1A;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+  }
+  &:active {
+    transform: scale(0.98);
+  }
 }
+
+@utility btn-slate-blue {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #7895B2;
+  color: #FFFFFF;
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  box-shadow: 0 2px 8px rgba(120, 149, 178, 0.3);
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  &:hover {
+    background-color: #5D7C9C;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(120, 149, 178, 0.42);
+  }
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+@utility btn-warm-sand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #E8DFCA;
+  color: #000000;
+  border: 1px solid #D6CCB5;
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  &:hover {
+    background-color: #F4EDE1;
+    border-color: #C4B9A0;
+    transform: translateY(-1px);
+  }
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+@utility btn-outline-mist {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: #000000;
+  border: 1px solid #AEBDCA;
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  &:hover {
+    background-color: rgba(174, 189, 202, 0.18);
+    border-color: #7895B2;
+    transform: translateY(-1px);
+  }
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Backward-compatible mappings */
 @utility btn-primary {
-  display: inline-flex; align-items: center; gap: .5rem; justify-content: center;
-  border-radius: 999px; padding: .75rem 1.4rem; font-weight: 600; font-size: .95rem;
-  background-image: var(--gradient-primary); color: var(--primary-foreground);
-  box-shadow: var(--shadow-soft); transition: transform .2s, box-shadow .2s;
-  &:hover { transform: translateY(-2px); box-shadow: var(--shadow-elegant); }
+  @apply btn-pure-black;
 }
 @utility btn-ghost {
-  display: inline-flex; align-items: center; gap: .5rem; justify-content: center;
-  border-radius: 999px; padding: .7rem 1.3rem; font-weight: 600; font-size: .95rem;
-  border: 1px solid var(--border); color: var(--primary); background: var(--card);
-  transition: background .2s, border-color .2s;
-  &:hover { background: var(--secondary); border-color: var(--lavender); }
+  @apply btn-warm-sand;
 }
 @utility btn-light {
-  display: inline-flex; align-items: center; gap: .5rem; justify-content: center;
-  border-radius: 999px; padding: .9rem 1.6rem; font-weight: 700;
-  background: var(--background); color: var(--primary); transition: transform .2s;
-  &:hover { transform: translateY(-2px) scale(1.02); }
-}
-@utility grid-dots {
-  background-image: radial-gradient(color-mix(in oklab, var(--primary) 14%, transparent) 1px, transparent 1px);
-  background-size: 22px 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 0.85rem 1.6rem;
+  font-weight: 600;
+  background-color: #FFFFFF;
+  color: #000000;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  &:hover {
+    background-color: #F4EDE1;
+    transform: translateY(-1px);
+  }
+  &:active {
+    transform: scale(0.98);
+  }
 }
 
-/* Animation keyframes used by tool illustrations */
+/* Background utilities */
+@utility bg-hero {
+  background-image: var(--gradient-hero);
+}
+@utility bg-gradient-primary {
+  background-color: #000000;
+}
+@utility bg-band {
+  background-color: #000000;
+}
+@utility shadow-elegant {
+  box-shadow: var(--shadow-card-hover);
+}
+@utility shadow-soft {
+  box-shadow: var(--shadow-card);
+}
+@utility text-gradient {
+  color: #000000;
+}
+@utility grid-dots {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ==========================================================================
+   TOOL ANIMATION KEYFRAMES
+   ========================================================================== */
+
 @keyframes slide-x { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-@keyframes float-y { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes float-y { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 @keyframes shrink { 0%,15% { transform: scale(1); } 55%,80% { transform: scale(.55); } 100% { transform: scale(1); } }
 @keyframes pop { 0%,10% { transform: scale(0); opacity: 0; } 30%,80% { transform: scale(1); opacity: 1; } 100% { transform: scale(0); opacity: 0; } }
 @keyframes squeeze { 0%,20%,100% { transform: scaleX(1); } 50%,70% { transform: scaleX(.6); } }
@@ -145,7 +283,7 @@
 @keyframes fade-up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes spin-slow { to { transform: rotate(360deg); } }
 
-/* Link shortener: long URL shrinks, password dots type in, padlock clicks shut, clock counts down, link expires */
+/* Link shortener keyframes */
 @keyframes ls-long { 0%,10% { opacity: 1; transform: translateY(0) scale(1); } 16%,90% { opacity: 0; transform: translateY(-8px) scale(.92); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
 @keyframes ls-arrow { 0%,10% { opacity: 0; } 15%,24% { opacity: 1; } 30%,100% { opacity: 0; } }
 @keyframes ls-card { 0%,18% { opacity: 0; transform: translateY(12px) scale(.9); } 24%,92% { opacity: 1; transform: translateY(0) scale(1); } 96%,100% { opacity: 0; transform: translateY(6px) scale(.94); } }
@@ -154,33 +292,26 @@
 @keyframes ls-lockbody { 0%,22% { opacity: 0; transform: translateY(-14px) scale(.85); } 30% { opacity: 1; transform: translateY(3px) scale(1.06); } 36%,92% { opacity: 1; transform: translateY(0) scale(1); } 96%,100% { opacity: 0; transform: translateY(-10px) scale(.9); } }
 @keyframes ls-shackle { 0%,38% { transform: rotate(-26deg) translateY(-3px); } 45%,90% { transform: rotate(0) translateY(0); } 95%,100% { transform: rotate(-26deg) translateY(-3px); } }
 @keyframes ls-ring { 0%,48% { stroke-dashoffset: 0; } 76%,100% { stroke-dashoffset: 113; } }
-@keyframes ls-bar { 0%,48% { transform: scaleX(1); background-color: var(--primary); } 70% { background-color: var(--destructive); } 76%,95% { transform: scaleX(0); background-color: var(--destructive); } 96%,100% { transform: scaleX(1); background-color: var(--primary); } }
+@keyframes ls-bar { 0%,48% { transform: scaleX(1); background-color: #7895B2; } 70% { background-color: #D95338; } 76%,95% { transform: scaleX(0); background-color: #D95338; } 96%,100% { transform: scaleX(1); background-color: #7895B2; } }
 @keyframes ls-lbl-out { 0%,70% { opacity: 1; } 76%,100% { opacity: 0; } }
 @keyframes ls-lbl-in { 0%,74% { opacity: 0; } 78%,100% { opacity: 1; } }
 @keyframes ls-strike { 0%,74% { transform: scaleX(0); } 80%,100% { transform: scaleX(1); } }
 @keyframes ls-stamp { 0%,74% { opacity: 0; transform: rotate(-8deg) scale(1.7); } 79%,100% { opacity: 1; transform: rotate(-8deg) scale(1); } }
 @keyframes ls-clock { 0%,72% { opacity: 1; transform: scale(1); } 80%,100% { opacity: 0; transform: scale(.8); } }
 
-/* Preset cards stagger in when a country or category is opened. */
 @keyframes preset-in { from { opacity: 0; transform: translateY(10px) scale(.97); } to { opacity: 1; transform: none; } }
-.preset-in { animation: preset-in .4s cubic-bezier(.2,.7,.3,1) both; }
+.preset-in { animation: preset-in .4s cubic-bezier(.16, 1, 0.3, 1) both; }
 @media (prefers-reduced-motion: reduce) { .preset-in { animation: none; } }
 
+@utility animate-fade-up { animation: fade-up .6s cubic-bezier(.16, 1, 0.3, 1) both; }
+@utility animate-float { animation: float-y 6s ease-in-out infinite; }
 
-@utility animate-fade-up { animation: fade-up .7s cubic-bezier(.2,.7,.2,1) both; }
-@utility animate-float { animation: float-y 5s ease-in-out infinite; }
-
-/* Illustrated fact cards only move on intentional hover. */
 @media (prefers-reduced-motion: no-preference) {
   .group:hover .insight-vector-float { animation: float-y 3s ease-in-out infinite; }
 }
 
-/* GIF compressor: nothing is dropped — the parts of a frame that never move go
-   transparent, so only the box around the moving figure is saved again.
-   The before/after states swap on a crisp cut so the two never print at once. */
-/* transparency checkerboard — the "nothing to save" look */
 .checker {
-  background-image: conic-gradient(var(--lavender) 90deg, transparent 0 180deg, var(--lavender) 0 270deg, transparent 0);
+  background-image: conic-gradient(#AEBDCA 90deg, transparent 0 180deg, #AEBDCA 0 270deg, transparent 0);
   background-size: 12px 12px;
 }
 @keyframes gc-step4 { from { transform: translateX(0); } to { transform: translateX(-256px); } }
@@ -189,13 +320,12 @@
 @keyframes gc-walk { 0%,100% { transform: translateX(-62px); } 25% { transform: translateX(62px); } 50% { transform: translateX(-62px); } 75% { transform: translateX(62px); } }
 @keyframes gc-xray { 0%,29% { opacity: 0; } 36%,86% { opacity: 1; } 92%,100% { opacity: 0; } }
 @keyframes gc-still { 0%,29% { opacity: 1; } 36%,86% { opacity: .12; } 92%,100% { opacity: 1; } }
-@keyframes gc-box { 0%,31% { opacity: 0; transform: scale(1.22); } 38%,86% { opacity: 1; transform: scale(1); } 92%,100% { opacity: 0; transform: scale(1.22); } }
-@keyframes gc-frame { 0%,30% { box-shadow: 0 0 0 0 transparent; } 34%,86% { box-shadow: 0 0 0 2px var(--primary); } 90%,100% { box-shadow: 0 0 0 0 transparent; } }
+@keyframes gc-box { 0%,31% { opacity: 0; transform: scale(1.22); } 38%,86% { opacity: 1; transform: scale(1); } 92%,100% { opacity: 0; transform: scale(1); } }
+@keyframes gc-frame { 0%,30% { box-shadow: 0 0 0 0 transparent; } 34%,86% { box-shadow: 0 0 0 2px #7895B2; } 90%,100% { box-shadow: 0 0 0 0 transparent; } }
 @keyframes gc-scan { 0%,24% { transform: translateX(-70px); opacity: 0; } 28%,38% { opacity: 1; } 44%,100% { transform: translateX(240px); opacity: 0; } }
 @keyframes gc-stamp { 0%,33% { opacity: 0; transform: rotate(-7deg) scale(1.7); } 38%,85% { opacity: 1; transform: rotate(-7deg) scale(1); } 89%,100% { opacity: 0; transform: rotate(-7deg) scale(1.5); } }
 @media (prefers-reduced-motion: reduce) { .gc-stage, .gc-stage * { animation: none !important; } }
 
-/* QR printer: only the sheet portal prints, at true millimetre size */
 .qr-print-portal { display: none; }
 @media print {
   body > *:not(.qr-print-portal) { display: none !important; }

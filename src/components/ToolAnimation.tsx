@@ -1,12 +1,12 @@
 import type { CSSProperties, ReactNode } from "react";
 
 const Stage = ({ children }: { children: ReactNode }) => (
-  <div className="relative flex h-72 w-full items-center justify-center overflow-hidden rounded-3xl border bg-card grid-dots shadow-elegant">
+  <div className="relative flex h-72 w-full items-center justify-center overflow-hidden rounded-3xl border border-[#D6CCB5] bg-[#FFFFFF] shadow-sm">
     {children}
   </div>
 );
-const Box = "rounded-xl bg-gradient-primary shadow-soft";
-const Soft = "rounded-lg bg-lavender/70";
+const Box = "rounded-xl bg-[#000000] text-white shadow-sm";
+const Soft = "rounded-lg bg-[#AEBDCA]/40";
 const a = (v: string): CSSProperties => ({ animation: v });
 
 function Anim({ slug }: { slug: string }) {

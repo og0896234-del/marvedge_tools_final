@@ -80,10 +80,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Marvedge Tools" },
-      { name: "description", content: "Free tools by Marvedge." },
+      { title: "Marvedge — 19 Minimalist In-Browser & AI Media Tools" },
+      { name: "description", content: "Nineteen lightweight browser utilities and AI media tools for founders, creators, and engineers. Zero server uploads, instant execution, zero latency." },
       { name: "author", content: "Marvedge" },
       { property: "og:type", content: "website" },
+      { property: "og:title", content: "Marvedge — 19 Minimalist In-Browser & AI Media Tools" },
+      { property: "og:description", content: "Nineteen lightweight browser utilities and AI media tools. Zero server uploads, instant execution." },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
@@ -94,7 +96,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", type: "image/png", href: "/favicon.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" },
     ],
   }),
   shellComponent: RootShell,

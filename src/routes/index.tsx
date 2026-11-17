@@ -38,17 +38,19 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Nineteen focused tools to trim clips, compress images, generate transcripts, and structure demo scripts. Client-side execution with zero latency and zero server uploads.",
+          "Nineteen focused tools to trim clips, compress images, generate transcripts, and structure demo scripts. Local browser media processing and secure ephemeral AI generation.",
       },
       { property: "og:title", content: "Marvedge Tools — 19 Minimalist In-Browser & AI Media Tools" },
       {
         property: "og:description",
         content:
-          "Nineteen focused tools to trim clips, compress images, and generate scripts. 100% private in-browser execution.",
+          "Nineteen focused tools to trim clips, compress images, and generate scripts. Fast in-browser media tools and private ephemeral AI.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://marvedge.com/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "https://marvedge.com/" }],
   }),
   component: Index,
 });
@@ -63,7 +65,7 @@ function ToolVisualPreview({ slug }: { slug: string }) {
             <span className="flex items-center gap-1.5 font-medium text-black">
               <Scissors className="h-3 w-3 text-[#7895B2]" /> Trim: 00:01.2 → 00:04.2
             </span>
-            <span className="rounded bg-[#7895B2]/20 px-1.5 py-0.5 text-[#7895B2] font-semibold">60 FPS</span>
+            <span className="rounded bg-[#7895B2]/20 px-1.5 py-0.5 text-[#7895B2] font-semibold">15 FPS</span>
           </div>
           <div className="relative h-6 rounded-lg bg-[#E8DFCA] p-1 flex items-center">
             <div className="absolute left-3 right-8 h-4 rounded bg-[#7895B2] flex items-center justify-between px-1.5 text-[9px] font-mono text-white">
@@ -199,7 +201,7 @@ function ToolVisualPreview({ slug }: { slug: string }) {
     case "link-shortener":
       return (
         <div className="flex items-center justify-between rounded-2xl bg-[#FAF7F0] p-3.5 border border-[#E8DFCA]">
-          <span className="font-mono text-xs font-semibold text-black">mrv.edge/launch</span>
+          <span className="font-mono text-xs font-semibold text-black">marvedge.com/go/launch</span>
           <span className="rounded-full bg-[#E8DFCA] px-2 py-0.5 text-[10px] font-mono font-medium text-black/70">
             7 Days Left
           </span>
@@ -367,11 +369,11 @@ function Index() {
             {/* Invariant Trust Strip */}
             <div className="mt-10 flex flex-wrap items-center justify-center gap-6 text-xs text-[#000000]/70 font-medium">
               <span className="inline-flex items-center gap-1.5">
-                <ShieldCheck className="h-4 w-4 text-[#7895B2]" /> 100% Client-Side Privacy
+                <ShieldCheck className="h-4 w-4 text-[#7895B2]" /> Local Browser & Private AI Privacy
               </span>
               <span>·</span>
               <span className="inline-flex items-center gap-1.5">
-                <Zap className="h-4 w-4 text-[#7895B2]" /> WebAssembly & GPU Accelerated
+                <Zap className="h-4 w-4 text-[#7895B2]" /> In-Browser Canvas & Fast Neural Models
               </span>
               <span>·</span>
               <span className="inline-flex items-center gap-1.5">
@@ -605,10 +607,10 @@ function Index() {
                 <ShieldCheck className="h-6 w-6" />
               </div>
               <h3 className="mt-6 text-xl font-bold tracking-tight text-[#000000]">
-                Absolute Privacy
+                Privacy by Architecture
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-[#000000]/70">
-                Your videos, documents, and images are processed using client-side WebAssembly, Canvas, and browser GPUs. They never upload to a cloud server.
+                Media files process in your browser with zero server uploads. AI generation tools send requests securely to inference providers ephemerally with zero model training.
               </p>
             </div>
 
@@ -620,7 +622,7 @@ function Index() {
                 Zero Upload Latency
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-[#000000]/70">
-                Forget waiting for 500MB uploads on slow connections. Processing begins the millisecond you drop a file onto the canvas.
+                Local media tools start encoding and resizing immediately in memory when you drop a file, avoiding the wait of uploading large files to remote servers.
               </p>
             </div>
 
